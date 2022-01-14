@@ -1,0 +1,9 @@
+[package]
+name = "rustmetos_api"
+version = "1.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rustmetos_core = { path = "../rustmetos_core", version = "^1.0" }
