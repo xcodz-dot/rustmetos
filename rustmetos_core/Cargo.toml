@@ -2,6 +2,14 @@
 name = "rustmetos_core"
 version = "1.0.0"
 edition = "2021"
+authors = ["xcodz-dot"]
+description = "Rustmetos Core, contains core utilites and core shell"
+readme = false 
+homepage = "https://github.com/xcodz-dot/rustmetos"
+repository = "https://github.com/xcodz-dot/rustmetos"
+license = "MIT"
+keywords = ["rustmetos", "meta", "os", "core"]
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
