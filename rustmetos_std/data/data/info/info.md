@@ -10,7 +10,7 @@ to be found within `/data/info` directory with the extension
 ## List the topics in `sh`
 
 ```
-info list
+info --list
 ```
 
 ## Read a topic in `sh`

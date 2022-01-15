@@ -94,7 +94,7 @@ in standard distribution and in the order of there creation.
 The list has been moved to `info` command.
 
 Type `info {name of command or topic}` to get information related to 
-its stored documentation or `info list` to list all the
+its stored documentation or `info --list` to list all the
 documentation topics available.
 
 # Contributing
