@@ -5,7 +5,7 @@ use std::fs;
 fn main() {
     let args: Vec<String> = args().collect();
 
-    if args.len() <= 3 {
+    if args.len() < 3 {
         println!(
             "\
 Usage:
