@@ -1,11 +1,11 @@
-use clap::{arg, App};
+use clap::{app_from_crate, arg};
 use reqwest::blocking;
 use std::fs;
 
 static VERSION: &str = "v1.0.0";
 
 fn main() {
-    let app = App::new("webget")
+    let app = app_from_crate!()
         .about("Download from a uri and store it locally.")
         .version(VERSION)
         .arg(arg!(

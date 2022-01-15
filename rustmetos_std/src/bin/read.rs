@@ -1,10 +1,10 @@
-use clap::{arg, App};
+use clap::{app_from_crate, arg};
 use std::fs;
 
 static VERSION: &str = "v1.0.0";
 
 fn main() {
-    let app = App::new("read")
+    let app = app_from_crate!()
         .about("Read a text file and print it to console")
         .version(VERSION)
         .arg(arg!(
