@@ -1,22 +1,23 @@
-use clap::Parser;
+use clap::{arg, App};
 use reqwest::blocking;
 use std::fs;
 
-#[derive(Parser)]
-#[clap()]
-struct Args {
-    /// URI to download from
-    uri: String,
-
-    /// File to store the downloaded content
-    destination: String,
-}
+static VERSION: &str = "v1.0.0";
 
 fn main() {
-    let args = Args::parse();
+    let app = App::new("webget")
+        .about("Download from a uri and store it locally.")
+        .version(VERSION)
+        .arg(arg!(
+            <uri> "URI to download from."
+        ))
+        .arg(arg!(
+            <dest> "Destination to download to."
+        ));
+    let args = app.get_matches();
 
-    let url = &args.uri;
-    let dest = &args.destination;
+    let url = args.value_of("uri").unwrap();
+    let dest = args.value_of("dest").unwrap();
 
     let mut response = blocking::get(url).unwrap();
 
