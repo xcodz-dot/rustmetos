@@ -1,21 +1,22 @@
+use clap::Parser;
 use reqwest::blocking;
-use std::env::args;
 use std::fs;
 
+#[derive(Parser)]
+#[clap()]
+struct Args {
+    /// URI to download from
+    uri: String,
+
+    /// File to store the downloaded content
+    destination: String,
+}
+
 fn main() {
-    let args: Vec<String> = args().collect();
+    let args = Args::parse();
 
-    if args.len() < 3 {
-        println!(
-            "\
-Usage:
-    webget {{uri}} {{output_file}}"
-        );
-        return;
-    }
-
-    let url = &args[1];
-    let dest = &args[2];
+    let url = &args.uri;
+    let dest = &args.destination;
 
     let mut response = blocking::get(url).unwrap();
 
