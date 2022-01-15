@@ -669,7 +669,7 @@ dependencies = [
 
 [[package]]
 name = "rustmetos_api"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "rustmetos_core",
 ]

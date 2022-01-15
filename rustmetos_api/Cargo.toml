@@ -1,6 +1,6 @@
 [package]
 name = "rustmetos_api"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 authors = ["xcodz-dot"]
 description = "Rustmetos API, contains app development api and os interaction apis."
