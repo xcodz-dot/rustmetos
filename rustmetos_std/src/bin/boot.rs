@@ -1,11 +1,11 @@
-use clap::{app_from_crate, arg, App};
+use clap::{arg, App};
 use configparser::ini::Ini;
 use rustmetos_api::api::path;
 
 static VERSION: &str = "v1.0.0";
 
 fn main() {
-    let app = app_from_crate!()
+    let app = App::new("boot")
         .about("Utility to set boot options in `init.conf`.")
         .version(VERSION)
         .subcommand(

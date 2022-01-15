@@ -1,30 +1,48 @@
+use clap::{arg, App, ArgGroup};
 use rustmetos_api::api::path;
-use std::env::args;
 use std::fs;
 use std::path::PathBuf;
 
-fn main() {
-    let args: Vec<String> = args().collect();
+static VERSION: &str = "v1.0.0";
 
-    if args.len() < 2 {
-        println!(
-            "\
-Usage:
-    info {{name of topic}}
-    info {{name of command}}
-    info list"
+fn main() {
+    let app = App::new("info")
+        .version(VERSION)
+        .about("Info command is the local manual of the system.")
+        .long_about(
+            "It provides you with a way to navigate documentation
+of commands provided by commands in markdown format.",
+        )
+        .arg(arg!(
+            -l --list ... "List arguments"
+        ))
+        .arg(arg!(
+            [topic] "Name of topic or command"
+        ))
+        .group(
+            ArgGroup::new("")
+                .arg("list")
+                .arg("topic")
+                .multiple(false)
+                .required(true),
         );
-        return;
-    }
+    let args = app.get_matches();
 
     let topics = list_topics().expect("Unable to obtain list of topics");
 
-    if &args[1] == "list" {
+    if args.is_present("list") {
         println!("{}", topics.join("\n"));
-    } else if topics.contains(&args[1]) {
-        let content = fs::read_to_string(path(&format!("/data/info/{}.md", &args[1])))
-            .expect("Unable to read the information from the info file");
-        println!("Info on topic {}:\n\n {}", args[1], content);
+    } else if topics.contains(&String::from(args.value_of("topic").unwrap())) {
+        let content = fs::read_to_string(path(&format!(
+            "/data/info/{}.md",
+            args.value_of("topic").unwrap()
+        )))
+        .expect("Unable to read the information from the info file");
+        println!(
+            "Info on topic {}:\n\n {}",
+            args.value_of("topic").unwrap(),
+            content
+        );
     } else {
         println!(
             "The given topic does not exist, please type info list to list all available topics"
