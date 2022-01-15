@@ -91,63 +91,11 @@ in standard distribution and in the order of there creation.
 
 # Standard Commands
 
-## `sh`
+The list has been moved to `info` command.
 
-Shell for short. Just invoke it as is and it will lead you
-to an interactive prompt that can be used to do further
-more powerfull tasks that can be done in core shell.
-
-To invoke it within the core shell:
-
-```
-exec sh
-```
-
-## `boot`
-
-Boot command provides a simple configuration modification
-utility for the `exec` section of `init.conf`. It allows
-for one command as of now which is to `set` the boot
-executable.
-
-You might wanna use it to switch between core shell 
-and `sh` or any other custom executable such as an init
-system.
-
-### Switch to core shell from `sh`
-```
-boot set internal:core_shell
-```
-### Switch to `sh` from core shell
-```
-exec boot set sh
-```
-
-## `read`
-
-Reads from a file and prints to the console. It is more of
-a copy of `cat {file}` from unix but way underpowered than
-`cat`. You can use it to read any file in usually text format
-to standard output.
-
-### Reading the `init.conf` in `sh`
-
-```
-home
-read conf/init.conf
-```
-
-## `unzip`
-
-Unzips a zip file into a provided directory. For example given
-a file named `example.zip` you can use this to extract its
-contents to a folder.
-
-### Extracting `example.zip` to a folder called `my_example` in `sh`
-
-```
-unzip example.zip my_example
-```
+Type `info {name of command or topic}` to get information related to 
+its stored documentation or `info list` to list all the
+documentation topics available.
 
 # Contributing
 
@@ -160,8 +108,9 @@ serves the purpose of motivation to me to learn rust but any
 contributions are welcomed because I have my flaws and I would 
 be greatful to learn about them.
 
-The best way to contribute would be to improve existing software
-or improving this single page documentation. The secondary way
+The best way to contribute would be to improve existing software, 
+improving this single page guide or command documentations under
+`rustmetos_std/data/data/info/{cmd_name}.md`. The secondary way
 to help would be to introduce more executables to the standard 
 distrubtution.
 
