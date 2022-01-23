@@ -1,5 +1,5 @@
 use crate::{home, input};
-use std::env::{consts::OS, current_dir, set_current_dir};
+use std::env::{consts::EXE_SUFFIX, current_dir, set_current_dir};
 use std::fs;
 use std::process::Command;
 
@@ -71,7 +71,7 @@ Type 'help' to list them."
                         Command::new(
                             home().clone().to_owned()
                                 + &format!("/bin/{}", command[1])
-                                + if OS == "windows" { ".exe" } else { "" },
+                                + EXE_SUFFIX,
                         )
                         .args(command[1..].iter())
                         .spawn()

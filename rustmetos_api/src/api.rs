@@ -1,3 +1,4 @@
+use std::env::consts::EXE_SUFFIX;
 use std::error::Error;
 use std::fs;
 use std::process::Command;
@@ -37,8 +38,7 @@ pub fn path(path: &str) -> String {
 }
 
 pub fn exec(name: &str, args: Vec<&str>) -> Result<(), Box<dyn Error>> {
-    #[cfg(windows)]
-    let name: &str = &(String::from(name) + ".exe");
+    let name: &str = &(String::from(name) + EXE_SUFFIX);
     let path = fs::read_to_string(path("/conf/path"))?;
     let path = path.split(";");
     let mut binary_name: Option<String> = None;

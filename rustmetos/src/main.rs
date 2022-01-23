@@ -1,6 +1,6 @@
 use ini::ini;
 use rustmetos_core::{home, init, input};
-use std::env::consts::OS;
+use std::env::consts::EXE_SUFFIX;
 use std::fs;
 use std::path::Path;
 use std::process::Command;
@@ -71,15 +71,10 @@ fn main() {
                 .unwrap();
         }
 
-        Command::new(
-            home().clone().to_owned()
-                + "/bin/"
-                + &executable_name
-                + if OS == "windows" { ".exe" } else { "" },
-        )
-        .spawn()
-        .unwrap()
-        .wait()
-        .unwrap();
+        Command::new(home().clone().to_owned() + "/bin/" + &executable_name + EXE_SUFFIX)
+            .spawn()
+            .unwrap()
+            .wait()
+            .unwrap();
     }
 }
